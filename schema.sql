@@ -54,7 +54,18 @@ ADD CONSTRAINT fk_invoice_id
 FOREIGN KEY (medical_history_id)
 REFERENCES medical_histories (id);
 
+-- Create the invoice_items junction table.
+CREATE TABLE invoice_items (
+    id SERIAL PRIMARY KEY,
+    invoice_id INT NOT NULL,
+    treatment_id INT NOT NULL
+);
 
-
-
-
+--Create foreign keys for invoice_items.
+ALTER TABLE invoice_items
+ADD CONSTRAINT fk_invoice_items_invoice_id
+FOREIGN KEY (invoice_id)
+REFERENCES invoices (id),
+ADD CONSTRAINT fk_invoice_items_treatment_id
+FOREIGN KEY (treatment_id)
+REFERENCES treatments (id);
