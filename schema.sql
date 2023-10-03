@@ -72,3 +72,14 @@ REFERENCES invoices (id),
 ADD CONSTRAINT fk_invoice_items_treatment_id
 FOREIGN KEY (treatment_id)
 REFERENCES treatments (id);
+
+-- Add FK indexes for the medical_histories, medical_history_treatments, invoices and invoice_items tables.
+CREATE INDEX idx_fk_patient_id ON medical_histories (patient_id);
+
+CREATE INDEX idx_fk_medical_history_id ON medical_history_treatments (medical_history_id);
+CREATE INDEX idx_fk_treatment_id ON medical_history_treatments (treatment_id);
+
+CREATE INDEX idx_fk_medical_history_id ON invoices (medical_history_id);
+
+CREATE INDEX idx_fk_invoice_id ON invoice_items (invoice_id);
+CREATE INDEX idx_fk_treatment_id ON invoice_items (treatment_id);
