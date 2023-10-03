@@ -1,3 +1,6 @@
+-= Creating a database with name clinic
+CREATE DATABASE clinic
+
 -- Creating a basic database table for a clinic's patients.
 CREATE TABLE patients (
     id SERIAL PRIMARY KEY,
