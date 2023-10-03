@@ -39,6 +39,22 @@ CREATE TABLE medical_history_treatments (
     FOREIGN KEY (treatment_id) REFERENCES treatment(id)
 );
 
+-- Create the invoices' table.
+CREATE TABLE invoices (
+    id SERIAL PRIMARY KEY,
+    total_amount DECIMAL NOT NULL,
+    genarated_at TIMESTAMP,
+    payed_at TIMESTAMP,
+    medical_history_id INT
+);
+
+-- Create foreign key for invoices.
+ALTER TABLE invoices
+ADD CONSTRAINT fk_invoice_id
+FOREIGN KEY (medical_history_id)
+REFERENCES medical_histories (id);
+
+
 
 
 
